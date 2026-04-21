@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore all 12 crops with advanced filters for season, soil type, water requirement, and category. Detailed crop information at your fingertips.">
+<title>Crops — AgriSystem</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="bg-canvas">
+  <div class="bg-orb bg-orb--1"></div>
+  <div class="bg-orb bg-orb--2"></div>
+  <div class="bg-orb bg-orb--3"></div>
+  <div class="bg-orb bg-orb--4"></div>
+  <div class="bg-orb bg-orb--5"></div>
+</div>
+<div class="bg-topo"></div>
+<div class="bg-noise"></div>
+<div class="bg-vignette"></div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🌾 <span>AgriSystem</span></a>
+    <div class="nav-links">
+      <a href="crops.html" class="active">Crops</a>
+      <a href="seeds.html">Seeds</a>
+      <a href="seasons.html">Seasons</a>
+      <a href="soils.html">Soil Guide</a>
+    </div>
+    <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+      <div class="theme-toggle-knob"></div>
+    </div>
+    <button class="nav-menu-btn" onclick="toggleMenu()">☰</button>
+  </div>
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="crops.html" class="active">Crops</a>
+    <a href="seeds.html">Seeds</a>
+    <a href="seasons.html">Seasons</a>
+    <a href="soils.html">Soil Guide</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <h1>🌾 Crop Explorer</h1>
+    <p>Filter by season, soil type, climate condition or water requirement</p>
+  </div>
+</div>
+
+<div class="container page-body">
+  <!-- SEARCH + FILTERS -->
+  <div class="filter-bar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search crops…" oninput="applyFilters()">
+    </div>
+    <div class="filter-group">
+      <select id="filterSeason" onchange="applyFilters()">
+        <option value="">All Seasons</option>
+        <option value="kharif">🌧️ Kharif</option>
+        <option value="rabi">❄️ Rabi</option>
+        <option value="summer">☀️ Summer</option>
+        <option value="annual">📅 Annual</option>
+        <option value="perennial">🌳 Perennial</option>
+      </select>
+      <select id="filterSoil" onchange="applyFilters()">
+        <option value="">All Soils</option>
+        <option value="alluvial">Alluvial</option>
+        <option value="black">Black</option>
+        <option value="loamy">Loamy</option>
+        <option value="sandy-loam">Sandy Loam</option>
+        <option value="clay">Clay</option>
+        <option value="laterite">Laterite</option>
+      </select>
+      <select id="filterWater" onchange="applyFilters()">
+        <option value="">Water Req.</option>
+        <option value="low">💧 Low</option>
+        <option value="medium">💧💧 Medium</option>
+        <option value="high">💧💧💧 High</option>
+      </select>
+      <select id="filterCategory" onchange="applyFilters()">
+        <option value="">All Categories</option>
+        <option value="cereal">Cereal</option>
+        <option value="vegetable">Vegetable</option>
+        <option value="cash_crop">Cash Crop</option>
+        <option value="oilseed">Oilseed</option>
+        <option value="pulse">Pulse</option>
+        <option value="fruit">Fruit</option>
+      </select>
+      <button class="btn-clear" onclick="clearFilters()">✕ Clear</button>
+    </div>
+  </div>
+
+  <div class="results-bar">
+    <span id="resultsCount">Loading…</span>
+  </div>
+
+  <div class="crop-cards-grid" id="cropGrid">
+    <div class="loading-spinner">Loading crops…</div>
+  </div>
+</div>
+
+<!-- CROP DETAIL MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal" id="cropModal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">🌾 AgriSystem — Crop &amp; Seed Management</div>
+  </div>
+</footer>
+
+<script src="api.js"></script>
+<script src="crops.js"></script>
+</body>
+</html>

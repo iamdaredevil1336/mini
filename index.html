@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="AgriSystem — Your complete agriculture information system. Discover crops, seeds, sowing calendars, soil guides & care tips for smarter farming.">
+  <title>AgriSystem — Crop & Seed Management</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ANIMATED BACKGROUND -->
+  <div class="bg-canvas">
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
+    <div class="bg-orb bg-orb--4"></div>
+    <div class="bg-orb bg-orb--5"></div>
+  </div>
+  <div class="bg-topo"></div>
+  <div class="bg-noise"></div>
+  <div class="bg-vignette"></div>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">🌾 <span>AgriSystem</span></a>
+      <div class="nav-links">
+        <a href="crops.html">Crops</a>
+        <a href="seeds.html">Seeds</a>
+        <a href="seasons.html">Seasons</a>
+        <a href="soils.html">Soil Guide</a>
+      </div>
+      <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+        <div class="theme-toggle-knob"></div>
+      </div>
+      <button class="nav-menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="crops.html">Crops</a>
+      <a href="seeds.html">Seeds</a>
+      <a href="seasons.html">Seasons</a>
+      <a href="soils.html">Soil Guide</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="hero-grain"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">🌱 Agriculture Information System</div>
+      <h1 class="hero-title">
+        Grow Smarter,<br>
+        <em>Harvest Better</em>
+      </h1>
+      <p class="hero-sub">
+        Discover which crops suit your land. Get precise seed details,
+        sowing calendars, water guides &amp; care tips — all in one place.
+      </p>
+      <div class="hero-actions">
+        <a href="crops.html" class="btn btn-primary">Browse Crops</a>
+        <a href="seeds.html" class="btn btn-outline">Seed Guide</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-n" id="statCrops">92</span><span class="stat-l">Crops</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n">5</span><span class="stat-l">Seasons</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n">10</span><span class="stat-l">Soil Types</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n">9</span><span class="stat-l">Categories</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="crop-orbit">
+        <div class="orbit-ring"></div>
+        <div class="orbit-center">🌾</div>
+        <div class="orbit-item" style="--deg:0deg">🌽</div>
+        <div class="orbit-item" style="--deg:60deg">🍅</div>
+        <div class="orbit-item" style="--deg:120deg">🥔</div>
+        <div class="orbit-item" style="--deg:180deg">🌻</div>
+        <div class="orbit-item" style="--deg:240deg">🥭</div>
+        <div class="orbit-item" style="--deg:300deg">🫘</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK FILTER -->
+  <section class="quick-filter">
+    <div class="container">
+      <h2 class="section-title">Find Crops by Season</h2>
+      <div class="season-pills">
+        <button class="pill pill-active" onclick="filterBySeason('all', this)">All Seasons</button>
+        <button class="pill" onclick="filterBySeason('kharif', this)">🌧️ Kharif</button>
+        <button class="pill" onclick="filterBySeason('rabi', this)">❄️ Rabi</button>
+        <button class="pill" onclick="filterBySeason('summer', this)">☀️ Summer</button>
+        <button class="pill" onclick="filterBySeason('perennial', this)">🌳 Perennial</button>
+      </div>
+      <div class="crop-cards-grid" id="homeCropGrid">
+        <div class="loading-spinner">Loading crops…</div>
+      </div>
+      <div class="center-link">
+        <a href="crops.html" class="btn btn-outline">View All Crops →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">What You Can Do</h2>
+      <div class="feature-grid">
+        <a href="crops.html" class="feature-card">
+          <div class="feature-icon">🌾</div>
+          <h3>Crop Explorer</h3>
+          <p>Browse all 92 crops with filters for season, soil type, climate, and water requirements.</p>
+        </a>
+        <a href="seeds.html" class="feature-card">
+          <div class="feature-icon">🌱</div>
+          <h3>Seed Guide</h3>
+          <p>Get exact seed rates, sowing depth, germination time, and spacing for every crop.</p>
+        </a>
+        <a href="seasons.html" class="feature-card">
+          <div class="feature-icon">📅</div>
+          <h3>Season Calendar</h3>
+          <p>Understand Kharif, Rabi, Summer and perennial crop cycles with sowing timelines.</p>
+        </a>
+        <a href="soils.html" class="feature-card">
+          <div class="feature-icon">🪱</div>
+          <h3>Soil Guide</h3>
+          <p>Match your soil type — alluvial, black, loamy, clay — to the best crops for your field.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CROP DETAIL MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    aria-label="Back to top">↑</button>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">🌾 AgriSystem</div>
+          <p>Agriculture Information System<br>Crop &amp; Seed Management</p>
+        </div>
+        <div class="footer-links">
+          <a href="crops.html">Crops</a>
+          <a href="seeds.html">Seeds</a>
+          <a href="seasons.html">Seasons</a>
+          <a href="soils.html">Soil Guide</a>
+        </div>
+      </div>
+      <div class="footer-bottom">Built with HTML · CSS · JavaScript — AgriSystem Project Team</div>
+    </div>
+  </footer>
+
+  <script src="api.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
